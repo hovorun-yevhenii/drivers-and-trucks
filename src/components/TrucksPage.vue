@@ -51,6 +51,11 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.trucks {
+  &__sort {
+     padding: 16px;
+     background-color: #888;
+   }
+}
 </style>
