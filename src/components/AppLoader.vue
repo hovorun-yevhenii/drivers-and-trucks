@@ -12,6 +12,12 @@
   export default {
     name: 'AppLoader',
 
+    methods: {
+      closeModal () {
+        console.log('gonna close modal')
+      }
+    },
+
     created () {
       this.hideSideBar();
     },
