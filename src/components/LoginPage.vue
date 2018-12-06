@@ -54,7 +54,7 @@
 
         localStorage.setItem('truckInToken', 'token');
 
-        this.$router.replace({ name: 'DashBoard' })
+        this.$router.replace('/')
       }
     }
   }

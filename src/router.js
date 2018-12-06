@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import LoginPage from './components/LoginPage';
-import DashBoard from './components/DashBoard';
+import HomePage from './components/HomePage';
 import DriversPage from './components/DriversPage';
 import TrucksPage from './components/TrucksPage';
 import NotFound from './components/NotFound';
@@ -24,8 +24,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'DashBoard',
-      component: DashBoard,
+      name: 'HomePage',
+      component: HomePage,
       redirect: '/drivers',
       beforeEnter: (to, from, next) => {
         isAuth() ? next() : next('/login');

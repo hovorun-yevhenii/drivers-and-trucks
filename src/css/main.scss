@@ -5,9 +5,23 @@
   color: #232323;
 }
 
+.container {
+  max-width: 960px;
+  min-width: 288px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 12px rgba(20,20,20,.2);
+}
+
 .app-input {
   border: 2px solid plum;
 }
 .app-button {
   border: 2px solid purple;
 }
+
+.router-link-active {
+  color: #fa0;
+}
+

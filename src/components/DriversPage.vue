@@ -5,9 +5,7 @@
       <p>{{ driver.name }} {{ driver.surname }}</p>
       <p>{{ driver.year }}</p>
       <p>{{ driver.phone }}</p>
-      <br/>
-      <br/>
-      <br/>
+      <hr />
     </div>
   </div>
 </template>

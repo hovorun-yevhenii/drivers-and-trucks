@@ -2,10 +2,9 @@
   <div>
     <div v-for="truck in trucks" :key="truck.id">
       <p>{{ truck.makes }} {{ truck.model }}</p>
+      <p>{{ truck.id }}</p>
       <p>{{ truck.year }}</p>
-      <br/>
-      <br/>
-      <br/>
+      <hr/>
     </div>
   </div>
 </template>
