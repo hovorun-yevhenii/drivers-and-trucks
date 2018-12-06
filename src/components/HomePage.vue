@@ -3,7 +3,8 @@
     <div class="container">
       <app-header @addItem="addItem"></app-header>
       <app-modal v-if="showModal" @closeModal="closeModal" :item="itemToAdd"></app-modal>
-      <router-view></router-view>
+      <router-view @toggleLoader="toggleLoader"></router-view>
+      <app-loader v-if="isLoading"></app-loader>
     </div>
   </div>
 </template>
@@ -11,17 +12,20 @@
 <script>
   import AppHeader from "./AppHeader"
   import AppModal from  "./AppModal"
+  import AppLoader from "./AppLoader"
 
   export default {
     name: "HomePage",
     components: {
       AppHeader,
-      AppModal
+      AppModal,
+      AppLoader
     },
     data () {
       return {
         showModal: false,
-        itemToAdd: null
+        itemToAdd: null,
+        isLoading: false
       }
     },
     methods: {
@@ -31,6 +35,9 @@
       },
       closeModal () {
         this.showModal = false;
+      },
+      toggleLoader (isLoading) {
+        this.isLoading = isLoading;
       }
     }
   }

@@ -18,12 +18,16 @@
       }
     },
     created() {
+      this.$emit('toggleLoader', true);
+
       this.apiRequest({url: 'bwrwu'}).then(
         response => {
-          this.trucks = response.data
+          this.trucks = response.data;
+          this.$emit('toggleLoader', false);
         },
         () => {
-          console.log('connection error')
+          console.log('connection error');
+          this.$emit('toggleLoader', false);
         })
     }
   }

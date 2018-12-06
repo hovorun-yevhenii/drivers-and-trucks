@@ -28,13 +28,11 @@
     props: ['item'],
 
     created () {
-      document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`;
-      document.body.style.overflow = 'hidden'
+      this.hideSideBar();
     },
 
     beforeDestroy () {
-      document.body.style.paddingRight = 'initial';
-      document.body.style.overflow = 'visible'
+      this.restoreSideBar();
     },
 
     data () {
@@ -48,7 +46,7 @@
         if (
           target.classList.contains('modal') ||
           currentTarget.classList.contains('modal__close')
-        ) this.$emit('closeModal')
+        ) this.$emit('closeModal');
       }
     }
   }

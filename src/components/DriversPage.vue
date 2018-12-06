@@ -22,12 +22,16 @@
       }
     },
     created() {
+      this.$emit('toggleLoader', true);
+
       this.apiRequest({url: "mmcba"}).then(
         response => {
-          this.drivers = response.data
+          this.drivers = response.data;
+          this.$emit('toggleLoader', false)
         },
         () => {
-          console.log('connection error')
+          console.log('connection error');
+          this.$emit('toggleLoader', false)
         })
     }
   }

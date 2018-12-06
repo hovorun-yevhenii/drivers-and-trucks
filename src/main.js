@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import router from './router';
 import App from './App.vue';
-import httpMixin from './utils/httpMixin'
+import HelperMixin from './utils/HelperMixin'
 
-Vue.mixin(httpMixin);
+Vue.mixin(HelperMixin);
 
 new Vue({
   el: '#app',
