@@ -1,21 +1,26 @@
 <template>
-  <div class="driver">
+  <div class="drivers">
     <div class="drivers__sort">
 
     </div>
-    <div v-for="driver in drivers" :key="driver.id" class="drivers__row">
-      <img :src="'https://randomuser.me/api/portraits/men/' + driver.id + '.jpg'" alt="" class="drivers__avatar">
-      <p class="drivers__name">{{ driver.name }}</p>
-      <p class="drivers__surname">{{ driver.surname }}</p>
-      <p class="drivers__year">{{ driver.year }}</p>
-      <p class="drivers__phone">{{ driver.phone }}</p>
+    <div class="drivers__table">
+      <driver-row v-for="driver in drivers"
+                  :key="driver.id"
+                  :driver="driver"
+                  @updateDriver="updateDriver"
+                  @deleteDriver="deleteDriver">
+      </driver-row>
     </div>
   </div>
 </template>
 
 <script>
+  import DriverRow from "./DriverRow"
   export default {
     name: "DriversPage",
+    components: {
+      DriverRow
+    },
     data () {
       return {
         drivers: {}
@@ -33,6 +38,14 @@
           console.log('connection error');
           this.$emit('toggleLoader', false)
         })
+    },
+    methods: {
+      deleteDriver (id) {
+        console.log('gonna del dr' + id)
+      },
+      updateDriver (id) {
+        console.log('gonna upd dr' + id)
+      }
     }
   }
 </script>
@@ -42,20 +55,6 @@
   &__sort {
     padding: 16px;
     background-color: #888;
-  }
-  &__row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
-    & + & {
-      border-top: 1px solid #777;
-    }
-  }
-  &__avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
   }
 }
 </style>
