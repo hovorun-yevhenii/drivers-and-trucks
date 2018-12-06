@@ -1,17 +1,27 @@
 <template>
-  <div>
-    <div v-for="truck in trucks" :key="truck.id">
-      <p>{{ truck.makes }} {{ truck.model }}</p>
-      <p>{{ truck.id }}</p>
-      <p>{{ truck.year }}</p>
-      <hr/>
+  <div class="trucks">
+    <div class="trucks__sort">
+
+    </div>
+    <div class="trucks__table">
+      <truck-row v-for="truck in trucks"
+                  :key="truck.id"
+                  :truck="truck"
+                  @updateTruck="updateTruck"
+                  @deleteTruck="deleteTruck">
+      </truck-row>
     </div>
   </div>
 </template>
 
 <script>
+  import TruckRow from "./TruckRow"
+
   export default {
     name: "TrucksPage",
+    components: {
+      TruckRow
+    },
     data() {
       return {
         trucks: {}
@@ -29,6 +39,14 @@
           console.log('connection error');
           this.$emit('toggleLoader', false);
         })
+    },
+    methods: {
+      deleteTruck (id) {
+        console.log('gonna del tr' + id)
+      },
+      updateTruck (id) {
+        console.log('gonna upd tr' + id)
+      }
     }
   }
 </script>
