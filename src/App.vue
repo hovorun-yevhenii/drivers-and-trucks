@@ -1,5 +1,7 @@
 <template>
-  <div id="app">{{foo}}</div>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -7,15 +9,16 @@ export default {
   name: 'app',
   data () {
     return {
-      foo: 'bar'
+      drivers: {},
+      trucks: {}
     }
+  },
+  created() {
+
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Helvetica, Arial, sans-serif;
-  color: #232323;
-}
+@import "./css/main";
 </style>

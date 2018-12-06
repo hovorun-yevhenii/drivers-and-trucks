@@ -1,0 +1,324 @@
+{
+  "drivers": [
+    {
+      "id": 1,
+      "name": "Markus",
+      "surname": "Kavanagh",
+      "year": 1992,
+      "phone": "+1 (501) 351-7679"
+    },
+    {
+      "id": 2,
+      "name": "Glyn",
+      "surname": "Christensen",
+      "year": 1986,
+      "phone": "+1 (718) 267-8620"
+    },
+    {
+      "id": 3,
+      "name": "Neel",
+      "surname": "Barnard",
+      "year": 1971,
+      "phone": "+1 (123) 707-2835"
+    },
+    {
+      "id": 4,
+      "name": "Indigo",
+      "surname": "Hulme",
+      "year": 1974,
+      "phone": "+1 (756) 766-3166"
+    },
+    {
+      "id": 5,
+      "name": "Thomas",
+      "surname": "Skinner",
+      "year": 1987,
+      "phone": "+1 (553) 300-7826"
+    },
+    {
+      "id": 6,
+      "name": "Otis",
+      "surname": "Herrera",
+      "year": 1985,
+      "phone": "+1 (961) 169-9742"
+    },
+    {
+      "id": 7,
+      "name": "Keaton",
+      "surname": "Harmon",
+      "year": 1985,
+      "phone": "+1 (115) 568-5604"
+    },
+    {
+      "id": 8,
+      "name": "Ned",
+      "surname": "Finnegan",
+      "year": 1977,
+      "phone": "+1 (337) 509-2522"
+    },
+    {
+      "id": 9,
+      "name": "Frank",
+      "surname": "Velez",
+      "year": 1967,
+      "phone": "+1 (908) 120-2032"
+    },
+    {
+      "id": 10,
+      "name": "Aryaan",
+      "surname": "Sullivan",
+      "year": 1976,
+      "phone": "+1 (481) 151-8788"
+    },
+    {
+      "id": 11,
+      "name": "Hasnain",
+      "surname": "Driscoll",
+      "year": 1984,
+      "phone": "+1 (937) 303-8338"
+    },
+    {
+      "id": 12,
+      "name": "Vihaan",
+      "surname": "Woodcock",
+      "year": 1988,
+      "phone": "+1 (294) 454-2582"
+    },
+    {
+      "id": 13,
+      "name": "Devin",
+      "surname": "Mcdonnell",
+      "year": 1980,
+      "phone": "+1 (692) 453-8121"
+    },
+    {
+      "id": 14,
+      "name": "Jae",
+      "surname": "Garrison",
+      "year": 1978,
+      "phone": "+1 (590) 772-8335"
+    },
+    {
+      "id": 15,
+      "name": "Emmanuel",
+      "surname": "Boone",
+      "year": 1982,
+      "phone": "+1 (431) 302-8703"
+    },
+    {
+      "id": 16,
+      "name": "John",
+      "surname": "Hatfield",
+      "year": 1984,
+      "phone": "+1 (315) 624-2782"
+    },
+    {
+      "id": 17,
+      "name": "Kaydan",
+      "surname": "Dickerson",
+      "year": 1972,
+      "phone": "+1 (124) 403-9620"
+    },
+    {
+      "id": 18,
+      "name": "Kishan",
+      "surname": "Mcintyre",
+      "year": 1978,
+      "phone": "+1 (518) 419-2793"
+    },
+    {
+      "id": 19,
+      "name": "Mahi",
+      "surname": "Garza",
+      "year": 1986,
+      "phone": "+1 (122) 593-3568"
+    },
+    {
+      "id": 20,
+      "name": "Evan",
+      "surname": "Donald",
+      "year": 1991,
+      "phone": "+1 (323) 272-1498"
+    },
+    {
+      "id": 21,
+      "name": "Naveed",
+      "surname": "Galloway",
+      "year": 1966,
+      "phone": "+1 (576) 381-8794"
+    },
+    {
+      "id": 22,
+      "name": "Kian",
+      "surname": "Hensley",
+      "year": 1967,
+      "phone": "+1 (190) 438-3377"
+    },
+    {
+      "id": 23,
+      "name": "Jordan",
+      "surname": "Harrison",
+      "year": 1973,
+      "phone": "+1 (193) 178-2931"
+    },
+    {
+      "id": 24,
+      "name": "Elis",
+      "surname": "Livingston",
+      "year": 1975,
+      "phone": "+1 (312) 568-4380"
+    }
+  ],
+  "trucks": [
+    {
+      "id": "E88-177",
+      "makes": "Chevrolet",
+      "model": "Silverado",
+      "year": 2004
+    },
+    {
+      "id": "GI6-9RT",
+      "makes": "Freightliner",
+      "model": "Condor",
+      "year": 2009
+    },
+    {
+      "id": "QC3-2LO",
+      "makes": "International",
+      "model": "HX520",
+      "year": 2000
+    },
+    {
+      "id": "85D-183",
+      "makes": "Chevrolet",
+      "model": "Express",
+      "year": 2003
+    },
+    {
+      "id": "1YE-YXF",
+      "makes": "Freightliner",
+      "model": "Columbia",
+      "year": 2010
+    },
+    {
+      "id": "69D-U48",
+      "makes": "Kenworth",
+      "model": "T800B",
+      "year": 2002
+    },
+    {
+      "id": "G86-2CT",
+      "makes": "Chevrolet",
+      "model": "Express",
+      "year": 20013
+    },
+    {
+      "id": "YO5-UI8",
+      "makes": "Mack",
+      "model": "Pinnacle",
+      "year": 2007
+    },
+    {
+      "id": "6ME-QK0",
+      "makes": "International",
+      "model": "7600",
+      "year": 2017
+    },
+    {
+      "id": "X65-W6Z",
+      "makes": "Freightliner",
+      "model": "FLD12042ST",
+      "year": 2006
+    },
+    {
+      "id": "SY3-274",
+      "makes": "GMC",
+      "model": "F6B042",
+      "year": 2006
+    },
+    {
+      "id": "AUE-21V",
+      "makes": "Kenworth",
+      "model": "900L",
+      "year": 2010
+    },
+    {
+      "id": "33V-3P4",
+      "makes": "Chevrolet",
+      "model": "Silverado",
+      "year": 2011
+    },
+    {
+      "id": "EAL-R10",
+      "makes": "Mack",
+      "model": "DM690S",
+      "year": 2013
+    },
+    {
+      "id": "9Q1-G1K",
+      "makes": "Freightliner",
+      "model": "Argosy",
+      "year": 2014
+    },
+    {
+      "id": "0TS-1LN",
+      "makes": "GMC",
+      "model": "3500HD",
+      "year": 2011
+    },
+    {
+      "id": "7ZB-IA0",
+      "makes": "Peterbilt",
+      "model": "359A",
+      "year": 1999
+    },
+    {
+      "id": "253-823",
+      "makes": "Mack",
+      "model": "R600",
+      "year": 2014
+    },
+    {
+      "id": "MQ6-JLY",
+      "makes": "International",
+      "model": "1654",
+      "year": 2014
+    },
+    {
+      "id": "I9H-P28",
+      "makes": "GMC",
+      "model": "Sierra 7000",
+      "year": 2016
+    },
+    {
+      "id": "Mack",
+      "makes": "Mack",
+      "model": "DM690SX",
+      "year": 2016
+    },
+    {
+      "id": "4A2-LAZ",
+      "makes": "Chevrolet",
+      "model": "G30",
+      "year": 2001
+    },
+    {
+      "id": "RZP-6XV",
+      "makes": "International",
+      "model": "HX515",
+      "year": 2004
+    },
+    {
+      "id": "1Q1-NTT",
+      "makes": "Kenworth",
+      "model": "T2000",
+      "year": 1999
+    },
+    {
+      "id": "84P-97P",
+      "makes": "Freightliner",
+      "model": "Coronado",
+      "year": 2003
+    }
+  ]
+}
