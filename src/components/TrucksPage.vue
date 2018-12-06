@@ -18,10 +18,12 @@
       }
     },
     created() {
-      fetch('db.json')
-        .then(resp => resp.json())
-        .then(resp => {
-          this.trucks = resp.trucks
+      this.apiRequest({url: 'bwrwu'}).then(
+        response => {
+          this.trucks = response.data
+        },
+        () => {
+          console.log('connection error')
         })
     }
   }

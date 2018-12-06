@@ -23,7 +23,7 @@
         this.$router.replace('/login');
       },
       addItem () {
-        console.log('gonna add new ' + this.itemToAdd)
+        this.$emit('addItem', this.itemToAdd)
       }
     }
   }

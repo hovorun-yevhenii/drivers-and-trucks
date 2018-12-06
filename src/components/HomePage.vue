@@ -1,7 +1,8 @@
 <template>
   <div class="main">
     <div class="container">
-      <app-header></app-header>
+      <app-header @addItem="addItem"></app-header>
+      <app-modal v-if="showModal" @closeModal="closeModal" :item="itemToAdd"></app-modal>
       <router-view></router-view>
     </div>
   </div>
@@ -9,14 +10,28 @@
 
 <script>
   import AppHeader from "./AppHeader"
+  import AppModal from  "./AppModal"
 
   export default {
     name: "HomePage",
     components: {
-      AppHeader
+      AppHeader,
+      AppModal
+    },
+    data () {
+      return {
+        showModal: false,
+        itemToAdd: null
+      }
     },
     methods: {
-
+      addItem (item) {
+        this.itemToAdd = item;
+        this.showModal = true;
+      },
+      closeModal () {
+        this.showModal = false;
+      }
     }
   }
 </script>
