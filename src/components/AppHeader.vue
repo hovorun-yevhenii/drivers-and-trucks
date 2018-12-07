@@ -5,7 +5,7 @@
         <router-link to="/trucks">trucks</router-link>
       </div>
       <button class="app-button" @click="addItem">add new {{ itemToAdd }}</button>
-      <button class="app-button" @click="logOut">log out</button>
+      <button class="app-button action logout" @click="logOut" title="log out"></button>
     </div>
 </template>
 

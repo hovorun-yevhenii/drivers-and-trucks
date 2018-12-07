@@ -5,8 +5,8 @@
     <p class="driver__surname">{{ driver.surname }}</p>
     <p class="driver__year">{{ driver.year }}</p>
     <p class="driver__phone">{{ driver.phone }}</p>
-    <button class="app-button" @click="$emit('updateDriver', driver.id)">update</button>
-    <button class="app-button" @click="$emit('deleteDriver', driver.id)">delete</button>
+    <button class="app-button action update" @click="$emit('updateDriver', driver.id)" title="update driver"></button>
+    <button class="app-button action delete" @click="$emit('deleteDriver', driver.id)" title="delete driver"></button>
   </div>
 </template>
 

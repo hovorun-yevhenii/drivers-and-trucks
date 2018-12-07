@@ -4,8 +4,8 @@
       <p class="truck__model">{{ truck.model }}</p>
       <p class="truck__id">{{ truck.id }}</p>
       <p class="truck__year">{{ truck.year }}</p>
-      <button class="app-button" @click="$emit('updateTruck', truck.id)">update</button>
-      <button class="app-button" @click="$emit('deleteTruck', truck.id)">delete</button>
+      <button class="app-button action update" @click="$emit('updateTruck', truck.id)" title="update truck"></button>
+      <button class="app-button action delete" @click="$emit('deleteTruck', truck.id)" title="delete truck"></button>
   </div>
 </template>
 
