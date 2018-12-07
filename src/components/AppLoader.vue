@@ -1,11 +1,14 @@
 <template>
+<transition name="fade">
   <div @click="closeModal" class="loader">
     <div class="loader__container">
-      <div class="loader__body">
-          IMG
-      </div>
+      <svg width="100%" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#323232" stroke-width="3"></circle>
+        <circle cx="50" cy="50" r="20" fill="#FF6F60" stroke="none"></circle>
+      </svg>
     </div>
   </div>
+</transition>
 </template>
 
 <script>
@@ -35,21 +38,35 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: hsla(15,50%,15%,.5);
+    background-color: hsla(6,50%,98%,.7);
     display: flex;
-    overflow-y: auto;
     z-index: 999;
 
     &__container {
-      width: 288px;
+      width: 100px;
       margin: auto;
-      background-color: #fff;
+      opacity: .8;
     }
 
-    &__body {
-      position: relative;
-      padding: 16px;
-      z-index: 1000;
+    circle {
+      transform-origin: center;
+      animation: fade 2s infinite;
+    }
+
+    circle + circle {
+      animation: scale .5s infinite alternate;
+    }
+
+    @keyframes scale {
+      to {
+        transform: scale(.8);
+      }
+    }
+
+    @keyframes fade {
+      to {
+        opacity: 0;
+      }
     }
   }
 </style>

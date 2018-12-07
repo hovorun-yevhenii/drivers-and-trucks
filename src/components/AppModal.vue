@@ -59,7 +59,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: hsla(15,50%,15%,.5);
+    background-color: hsla(6,50%,5%,.7);
     display: flex;
     overflow-y: auto;
     z-index: 999;
