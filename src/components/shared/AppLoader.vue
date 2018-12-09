@@ -25,7 +25,7 @@
     &__container {
       width: 100px;
       margin: auto;
-      opacity: .8;
+      opacity: .5;
     }
 
     circle {

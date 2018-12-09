@@ -4,7 +4,7 @@
       <div v-if="itemName === 'driver'" class="modal__body">
 
         <div class="modal__header">
-          <p class="form__title">{{ editMode ? "Edit driver" : "New driver" }}</p>
+          <p class="modal__title">{{ editMode ? "Edit driver" : "New driver" }}</p>
           <div class="modal__close" @click="closeModal">
             <p>X</p>
           </div>
@@ -12,27 +12,27 @@
 
         <div class="modal__info">
           <div class="form">
-            <label>Name
-              <input v-model="newItem.name" type="text" v-validate="'required'" name="name" autofocus>
+            <label class="app-label">Name
+              <input class="app-input" v-model="newItem.name" v-validate="'required'" name="name" autofocus>
               <span>{{ errors.first('name') }}</span>
             </label>
 
-            <label>Surname
-              <input v-model="newItem.surname" type="text" v-validate="'required'" name="surname">
+            <label class="app-label">Surname
+              <input class="app-input" v-model="newItem.surname" v-validate="'required'" name="surname">
               <span>{{ errors.first('surname') }}</span>
             </label>
 
-            <label>Year
-              <input v-model="newItem.year" type="text" v-validate="'required'" name="year">
+            <label class="app-label">Year
+              <input class="app-input" v-model="newItem.year" v-validate="'required'" name="year">
               <span>{{ errors.first('year') }}</span>
             </label>
 
-            <label>Phone
-              <input v-model="newItem.phone" type="text" v-validate="'required'" name="phone">
+            <label class="app-label">Phone
+              <input class="app-input" v-model="newItem.phone" v-validate="'required'" name="phone">
               <span>{{ errors.first('phone') }}</span>
             </label>
 
-            <button @click="validate">submit</button>
+            <button class="app-button submit" @click="validate">submit</button>
           </div>
         </div>
 
@@ -41,7 +41,7 @@
       <div v-if="itemName === 'truck'" class="modal__body">
 
         <div class="modal__header">
-          <p class="form__title">{{ editMode ? "Edit truck" : "New truck" }}</p>
+          <p class="modal__title">{{ editMode ? "Edit truck" : "New truck" }}</p>
           <div class="modal__close" @click="closeModal">
             <p>X</p>
           </div>
@@ -49,27 +49,27 @@
 
         <div class="modal__info">
           <div class="form">
-            <label>Makes
-              <input v-model="newItem.makes" type="text" v-validate="'required'" name="makes" autofocus>
+            <label class="app-label">Makes
+              <input class="app-input" v-model="newItem.makes" v-validate="'required'" name="makes" autofocus>
               <span>{{ errors.first('makes') }}</span>
             </label>
 
-            <label>Model
-              <input v-model="newItem.model" type="text" v-validate="'required'" name="model">
+            <label class="app-label">Model
+              <input class="app-input" v-model="newItem.model" v-validate="'required'" name="model">
               <span>{{ errors.first('model') }}</span>
             </label>
 
-            <label>Number
-              <input v-model="newItem.number" type="text" v-validate="'required'" name="number">
+            <label class="app-label">Number
+              <input class="app-input" v-model="newItem.number" v-validate="'required'" name="number">
               <span>{{ errors.first('number') }}</span>
             </label>
 
-            <label>Year
-              <input v-model="newItem.year" type="text" v-validate="'required'" name="year">
+            <label class="app-label">Year
+              <input class="app-input" v-model="newItem.year" v-validate="'required'" name="year">
               <span>{{ errors.first('year') }}</span>
             </label>
 
-            <button @click="validate">submit</button>
+            <button class="app-button submit" @click="validate">submit</button>
           </div>
         </div>
 
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-  import { EventBus } from '../EventBus'
+  import { EventBus } from '../../utils/EventBus'
 
   export default {
     name: 'AppModal',
@@ -161,29 +161,11 @@
       cursor: pointer;
       margin-left: auto;
       margin-bottom: auto;
+      font-family: sans-serif;
     }
 
-    label {
-      position: relative;
-      display: flex;
-      flex-flow: column nowrap;
-      margin-bottom: 16px;
-      padding-bottom: 16px;
-
-      input {
-        margin-top: 8px;
-      }
-
-      span {
-        position: absolute;
-        bottom: 0;
-        font-size: 12px;
-      }
-    }
-
-    button {
-      display: block;
-      margin: 24px auto 8px auto;
+    &__title {
+      font-size: 24px;
     }
   }
 </style>

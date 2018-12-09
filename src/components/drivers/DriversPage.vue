@@ -57,7 +57,7 @@
 
 <script>
   import DriverRow from "./DriverRow"
-  import {EventBus} from '../EventBus'
+  import {EventBus} from '../../utils/EventBus'
 
   export default {
     name: "DriversPage",

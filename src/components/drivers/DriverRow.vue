@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import { EventBus } from '../EventBus'
+  import { EventBus } from '../../utils/EventBus'
 
   export default {
     name: "DriverRow",

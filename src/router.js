@@ -3,8 +3,8 @@ import Router from 'vue-router';
 
 import LoginPage from './components/LoginPage';
 import HomePage from './components/HomePage';
-import DriversPage from './components/DriversPage';
-import TrucksPage from './components/TrucksPage';
+import DriversPage from './components/drivers/DriversPage';
+import TrucksPage from './components/trucks/TrucksPage';
 import NotFound from './components/NotFound';
 
 Vue.use(Router);

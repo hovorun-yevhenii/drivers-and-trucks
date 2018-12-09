@@ -19,12 +19,43 @@ $icon-triangle: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlb
 }
 
 .app-input {
-  border: 2px solid plum;
+  font-family: 'Roboto Slab', serif;
+  color: #232323;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid rgba(20,20,20,.2);
+  &:focus, &:active {
+    outline: none;
+    border: 1px solid rgba(20,20,20,.4);
+  }
 }
+
+.app-label {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  width: calc(100% - 20px);
+  margin-bottom: 8px;
+  padding-bottom: 16px;
+  color: rgba(20,20,20,.7);
+
+  span {
+    position: absolute;
+    bottom: 0;
+    font-size: 11px;
+    color: #c83c32;
+  }
+}
+
 .app-button {
-  border: 2px solid purple;
+  font-family: 'Roboto Slab', serif;
+  color: #232323;
+  border: none;
   cursor: pointer;
   transition: .1s;
+  text-transform: uppercase;
+
   &:active, &:focus {
     outline: none;
   }
@@ -33,6 +64,9 @@ $icon-triangle: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlb
     height: 36px;
     border: none;
     border-radius: 5%;
+  }
+  &.add {
+    padding: 16px 24px;
   }
   &.update {
     background: gray $icon-edit center/52% no-repeat;
@@ -43,44 +77,44 @@ $icon-triangle: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlb
   &.delete {
     background: gray $icon-delete center/72% no-repeat;
     &:hover {
-      background-color: crimson;
+      background-color: #fa7266;
     }
+  }
+  &.submit {
+    display: block;
+    padding: 8px 16px;
+    margin: 24px auto 8px auto;
+  }
+  &.login-btn {
+    padding: 8px 16px;
   }
   &.logout {
+    height: 50px;
+    width: 50px;
     background: gray $icon-logout center/52% no-repeat;
     &:hover {
-      background-color: lightseagreen;
+      background-color: #fa7266;
     }
   }
-}
-
-.triangle {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  margin-left: 16px;
 }
 
 .triangle {
   width: 22px;
   height: 16px;
+  margin-left: 16px;
   background: transparent $icon-triangle center/85% no-repeat;
   cursor: pointer;
-  opacity: .5;
+  transition: .2s;
+  opacity: .3;
   &:hover {
-    opacity: .6;
+    opacity: .4;
   }
   &.up {
     transform: rotate(180deg);
   }
   &.active {
-    opacity: .8;
+    opacity: .6;
   }
-}
-
-.router-link-active {
-  color: #fa0;
 }
 
 .fade-enter-active, .fade-leave-active {

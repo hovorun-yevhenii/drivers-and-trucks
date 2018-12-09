@@ -2,10 +2,13 @@
   <div class="main">
     <div class="container">
       <app-header></app-header>
-      <app-modal v-if="showModal"
-                 @closeModal="closeModal"
-                 :itemName="itemName"
-                 :editObj="editObj"></app-modal>
+      <transition name="fade">
+        <app-modal v-if="showModal"
+                   @closeModal="closeModal"
+                   :itemName="itemName"
+                   :editObj="editObj">
+        </app-modal>
+      </transition>
       <router-view @toggleLoader="toggleLoader"></router-view>
       <app-loader v-if="isLoading"></app-loader>
     </div>
@@ -13,10 +16,10 @@
 </template>
 
 <script>
-  import AppHeader from "./AppHeader"
-  import AppModal from  "./AppModal"
-  import AppLoader from "./AppLoader"
-  import { EventBus } from '../EventBus'
+  import AppHeader from "./shared/AppHeader"
+  import AppModal from "./shared/AppModal"
+  import AppLoader from "./shared/AppLoader"
+  import { EventBus } from '../utils/EventBus'
 
   export default {
     name: "HomePage",
