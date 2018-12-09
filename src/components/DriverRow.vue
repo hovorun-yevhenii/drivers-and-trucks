@@ -5,15 +5,25 @@
     <p class="driver__surname">{{ driver.surname }}</p>
     <p class="driver__year">{{ driver.year }}</p>
     <p class="driver__phone">{{ driver.phone }}</p>
-    <button class="app-button action update" @click="$emit('updateDriver', driver.id)" title="update driver"></button>
-    <button class="app-button action delete" @click="$emit('deleteDriver', driver.id)" title="delete driver"></button>
+    <button class="app-button action update" @click="openDriverModal" title="update driver"></button>
+    <button class="app-button action delete" @click="deleteDriver" title="delete driver"></button>
   </div>
 </template>
 
 <script>
+  import { EventBus } from '../EventBus'
+
   export default {
     name: "DriverRow",
-    props: ['driver']
+    props: ['driver'],
+    methods: {
+      deleteDriver () {
+        EventBus.$emit('deleteDriver', this.driver.id)
+      },
+      openDriverModal () {
+        EventBus.$emit('openDriverModal', this.driver)
+      }
+    }
   }
 </script>
 
@@ -29,8 +39,22 @@
 
     &__avatar {
       width: 64px;
-      height: 64px;
       border-radius: 50%;
+    }
+    &__name {
+      flex-basis: 170px;
+    }
+    &__surname {
+      flex-basis: 170px;
+    }
+    &__year {
+      flex-basis: 50px;
+    }
+    &__phone {
+      width: 170px;
+    }
+    .action {
+      flex-basis: 48px;
     }
   }
 </style>

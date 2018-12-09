@@ -1,11 +1,10 @@
 <template>
   <div @click="closeModal" class="modal">
     <div class="modal__container">
-      <div class="modal__body">
+      <div v-if="itemName === 'driver'" class="modal__body">
 
         <div class="modal__header">
-          <div class="form__icon">ICON</div>
-          <p class="form__title">{{ item === "truck" ? "Edit truck" : "Add driver" }}</p>
+          <p class="form__title">{{ editMode ? "Edit driver" : "New driver" }}</p>
           <div class="modal__close" @click="closeModal">
             <p>X</p>
           </div>
@@ -13,7 +12,64 @@
 
         <div class="modal__info">
           <div class="form">
-            <input type="text"><input type="text"><input type="text"><input type="text">
+            <label>Name
+              <input v-model="newItem.name" type="text" v-validate="'required'" name="name" autofocus>
+              <span>{{ errors.first('name') }}</span>
+            </label>
+
+            <label>Surname
+              <input v-model="newItem.surname" type="text" v-validate="'required'" name="surname">
+              <span>{{ errors.first('surname') }}</span>
+            </label>
+
+            <label>Year
+              <input v-model="newItem.year" type="text" v-validate="'required'" name="year">
+              <span>{{ errors.first('year') }}</span>
+            </label>
+
+            <label>Phone
+              <input v-model="newItem.phone" type="text" v-validate="'required'" name="phone">
+              <span>{{ errors.first('phone') }}</span>
+            </label>
+
+            <button @click="validate">submit</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div v-if="itemName === 'truck'" class="modal__body">
+
+        <div class="modal__header">
+          <p class="form__title">{{ editMode ? "Edit truck" : "New truck" }}</p>
+          <div class="modal__close" @click="closeModal">
+            <p>X</p>
+          </div>
+        </div>
+
+        <div class="modal__info">
+          <div class="form">
+            <label>Makes
+              <input v-model="newItem.makes" type="text" v-validate="'required'" name="makes" autofocus>
+              <span>{{ errors.first('makes') }}</span>
+            </label>
+
+            <label>Model
+              <input v-model="newItem.model" type="text" v-validate="'required'" name="model">
+              <span>{{ errors.first('model') }}</span>
+            </label>
+
+            <label>Number
+              <input v-model="newItem.number" type="text" v-validate="'required'" name="number">
+              <span>{{ errors.first('number') }}</span>
+            </label>
+
+            <label>Year
+              <input v-model="newItem.year" type="text" v-validate="'required'" name="year">
+              <span>{{ errors.first('year') }}</span>
+            </label>
+
+            <button @click="validate">submit</button>
           </div>
         </div>
 
@@ -23,12 +79,15 @@
 </template>
 
 <script>
+  import { EventBus } from '../EventBus'
+
   export default {
-    name: 'NewModal',
-    props: ['item'],
+    name: 'AppModal',
+    props: ['itemName', 'editObj'],
 
     created () {
       this.hideSideBar();
+      Object.assign(this.newItem, this.editObj)
     },
 
     beforeDestroy () {
@@ -37,7 +96,9 @@
 
     data () {
       return {
-        initialPadding: 0
+        initialPadding: 0,
+        newItem: {},
+        editMode: Object.keys(this.editObj).length
       }
     },
 
@@ -47,6 +108,19 @@
           target.classList.contains('modal') ||
           currentTarget.classList.contains('modal__close')
         ) this.$emit('closeModal');
+      },
+      validate () {
+        this.$validator.validateAll().then((result) => {
+          if(!result) return;
+
+          if (this.itemName === 'driver') {
+            this.editMode ? EventBus.$emit('updateDriver', this.newItem) : EventBus.$emit('createDriver', this.newItem);
+          } else {
+            this.editMode ? EventBus.$emit('updateTruck', this.newItem) : EventBus.$emit('createTruck', this.newItem);
+          }
+
+          this.$emit('closeModal');
+        })
       }
     }
   }
@@ -87,6 +161,29 @@
       cursor: pointer;
       margin-left: auto;
       margin-bottom: auto;
+    }
+
+    label {
+      position: relative;
+      display: flex;
+      flex-flow: column nowrap;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+
+      input {
+        margin-top: 8px;
+      }
+
+      span {
+        position: absolute;
+        bottom: 0;
+        font-size: 12px;
+      }
+    }
+
+    button {
+      display: block;
+      margin: 24px auto 8px auto;
     }
   }
 </style>

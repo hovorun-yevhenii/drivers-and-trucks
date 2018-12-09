@@ -12,7 +12,7 @@ Vue.use(Router);
 const isAuth = () => localStorage.getItem('truckInToken');
 
 export default new Router({
-  mode: 'hash',
+  mode: 'history',
   routes: [
     {
       path: '/login',

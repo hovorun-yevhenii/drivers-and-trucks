@@ -1,6 +1,6 @@
 <template>
 <transition name="fade">
-  <div @click="closeModal" class="loader">
+  <div class="loader">
     <div class="loader__container">
       <svg width="100%" viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="40" fill="none" stroke="#323232" stroke-width="3"></circle>
@@ -10,26 +10,6 @@
   </div>
 </transition>
 </template>
-
-<script>
-  export default {
-    name: 'AppLoader',
-
-    methods: {
-      closeModal () {
-        console.log('gonna close modal')
-      }
-    },
-
-    created () {
-      this.hideSideBar();
-    },
-
-    beforeDestroy () {
-      this.restoreSideBar();
-    },
-  }
-</script>
 
 <style lang="scss" scoped>
   .loader {

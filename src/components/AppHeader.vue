@@ -10,6 +10,8 @@
 </template>
 
 <script>
+  import { EventBus } from '../EventBus'
+
   export default {
     name: "AppHeader",
     computed: {
@@ -23,7 +25,7 @@
         this.$router.replace('/login');
       },
       addItem () {
-        this.$emit('addItem', this.itemToAdd)
+        EventBus.$emit('openNewModal', this.itemToAdd);
       }
     }
   }
