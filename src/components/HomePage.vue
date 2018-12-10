@@ -10,8 +10,8 @@
         </app-modal>
       </transition>
       <router-view @toggleLoader="toggleLoader"></router-view>
-      <app-confirm v-if="showConfirm" :itemToDel="itemToDel"></app-confirm>
       <app-note></app-note>
+      <app-confirm v-if="showConfirm" :itemToDel="itemToDel"></app-confirm>
       <app-loader v-if="isLoading"></app-loader>
     </div>
   </div>

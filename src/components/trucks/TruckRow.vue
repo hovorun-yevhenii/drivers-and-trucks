@@ -4,8 +4,8 @@
       <p class="truck__model">{{ truck.model }}</p>
       <p class="truck__number">{{ truck.number }}</p>
       <p class="truck__year">{{ truck.year }}</p>
-      <button class="app-button action update" @click="openTruckModal" title="update truck"></button>
-      <button class="app-button action delete" @click="deleteTruck" title="delete truck"></button>
+      <button class="app-button action update" @click="openTruckModal"></button>
+      <button class="app-button action delete" @click="deleteTruck"></button>
   </div>
 </template>
 
@@ -33,7 +33,7 @@
   align-items: center;
   padding: 16px 0;
   & + & {
-      border-top: 1px solid #777;
+    border-top: 1px dashed #ddd;
   }
 
   &__makes {
@@ -47,9 +47,6 @@
   }
   &__year {
     flex-basis: 150px;
-  }
-  .action {
-    flex-basis: 48px;
   }
 }
 </style>

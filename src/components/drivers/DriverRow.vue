@@ -5,8 +5,8 @@
     <p class="driver__surname">{{ driver.surname }}</p>
     <p class="driver__year">{{ driver.year }}</p>
     <p class="driver__phone">{{ driver.phone }}</p>
-    <button class="app-button action update" @click="openDriverModal" title="update driver"></button>
-    <button class="app-button action delete" @click="deleteDriver" title="delete driver"></button>
+    <button class="app-button action update" @click="openDriverModal"></button>
+    <button class="app-button action delete" @click="deleteDriver"></button>
   </div>
 </template>
 
@@ -34,27 +34,25 @@
     align-items: center;
     padding: 16px 0;
     & + & {
-      border-top: 1px solid #777;
+      border-top: 1px dashed #ddd;
     }
 
     &__avatar {
       width: 64px;
+      border: 1px solid #aaa;
       border-radius: 50%;
     }
     &__name {
-      flex-basis: 170px;
+      width: 160px;
     }
     &__surname {
-      flex-basis: 170px;
+      width: 160px;
     }
     &__year {
-      flex-basis: 50px;
+      width: 70px;
     }
     &__phone {
       width: 170px;
-    }
-    .action {
-      flex-basis: 48px;
     }
   }
 </style>

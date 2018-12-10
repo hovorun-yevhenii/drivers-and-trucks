@@ -3,7 +3,7 @@
   <div class="loader">
     <div class="loader__container">
       <svg width="100%" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#323232" stroke-width="3"></circle>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#66abfa" stroke-width="3"></circle>
         <circle cx="50" cy="50" r="20" fill="#FF6F60" stroke="none"></circle>
       </svg>
     </div>
@@ -25,7 +25,7 @@
     &__container {
       width: 100px;
       margin: auto;
-      opacity: .5;
+      opacity: .7;
     }
 
     circle {

@@ -6,6 +6,8 @@
                placeholder="user"
                name="login"
                v-validate="'required|min:4'"
+               data-vv-validate-on="submit|blur"
+               @keyup.enter="submitHandler"
                autofocus>
         <span>{{ errors.first('login') }}</span>
       </label>
@@ -16,11 +18,13 @@
                type="password"
                placeholder="user"
                v-validate="'required|min:4'"
+               data-vv-validate-on="submit|blur"
+               @keyup.enter="submitHandler"
                name="password">
         <span>{{ errors.first('password') }}</span>
       </label>
 
-      <button class="app-button login-btn" @click="submitHandler">sign in</button>
+      <button class="app-button add" @click="submitHandler">sign in</button>
     </div>
 </template>
 
@@ -53,8 +57,8 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    width: 288px;
-    min-height: 100vh;
+    width: 360px;
+    min-height: 80vh;
     box-sizing: border-box;
     margin: 0 auto;
   }

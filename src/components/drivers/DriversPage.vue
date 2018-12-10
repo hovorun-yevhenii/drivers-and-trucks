@@ -1,6 +1,6 @@
 <template>
   <div class="drivers">
-    <div class="drivers__sort">
+    <div class="drivers__sort sort-row">
       <div class="name">
         <span>name</span>
         <div class="triangles">
@@ -149,16 +149,12 @@
     &__sort {
       display: flex;
       align-items: center;
-      padding: 16px 0 16px 107px;
+      margin: 0 -16px;
+      padding: 16px 0 16px 120px;
       background-color: #eee;
 
-      & > * {
-        display: flex;
-        align-items: center;
-      }
-
       .name {
-        margin-right: 120px;
+        margin-right: 116px;
       }
 
       .surname {
@@ -166,7 +162,7 @@
       }
 
       .year {
-        margin-right: 22px;
+        margin-right: 38px;
       }
     }
   }

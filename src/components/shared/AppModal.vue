@@ -1,38 +1,59 @@
 <template>
-  <div @click="closeModal" class="modal">
+  <div class="modal">
     <div class="modal__container">
       <div v-if="itemName === 'driver'" class="modal__body">
 
+        <div class="close-btn" @click="$emit('closeModal')"></div>
         <div class="modal__header">
           <p class="modal__title">{{ editMode ? "Edit driver" : "New driver" }}</p>
-          <div class="modal__close" @click="closeModal">
-            <p>X</p>
-          </div>
         </div>
 
         <div class="modal__info">
           <div class="form">
             <label class="app-label">Name
-              <input class="app-input" v-model="newItem.name" v-validate="'required'" name="name" autofocus>
+              <input ref="autoFocus"
+                     class="app-input"
+                     v-model="newItem.name"
+                     v-validate="'required|alpha|min:2|max:15'"
+                     data-vv-validate-on="submit|blur"
+                     name="name"
+                     placeholder="John">
               <span>{{ errors.first('name') }}</span>
             </label>
 
             <label class="app-label">Surname
-              <input class="app-input" v-model="newItem.surname" v-validate="'required'" name="surname">
+              <input class="app-input"
+                     v-model="newItem.surname"
+                     v-validate="'required|alpha|min:2|max:15'"
+                     data-vv-validate-on="submit|blur"
+                     name="surname"
+                     placeholder="Dow">
               <span>{{ errors.first('surname') }}</span>
             </label>
 
             <label class="app-label">Year
-              <input class="app-input" v-model="newItem.year" v-validate="'required'" name="year">
+              <input class="app-input"
+                     v-model="newItem.year"
+                     v-validate="{ required: true, max_value: 2000, min_value: 1950 }"
+                     data-vv-validate-on="submit|blur"
+                     name="year"
+                     placeholder="1991">
               <span>{{ errors.first('year') }}</span>
             </label>
 
             <label class="app-label">Phone
-              <input class="app-input" v-model="newItem.phone" v-validate="'required'" name="phone">
+              <masked-input mask="\+\1 (111) 111-1111"
+                            class="app-input"
+                            v-model="newItem.phone"
+                            v-validate="{ required: true, regex: /^[\s()+-]*([0-9][\s()+-]*){6,20}$/ }"
+                            data-vv-validate-on="submit|blur"
+                            name="phone"
+                            placeholder="+1 (111) 111-1111">
+              </masked-input>
               <span>{{ errors.first('phone') }}</span>
             </label>
 
-            <button class="app-button submit" @click="validate">submit</button>
+            <button class="app-button add" @click="validate">submit</button>
           </div>
         </div>
 
@@ -42,34 +63,53 @@
 
         <div class="modal__header">
           <p class="modal__title">{{ editMode ? "Edit truck" : "New truck" }}</p>
-          <div class="modal__close" @click="closeModal">
-            <p>X</p>
-          </div>
+          <div class="close-btn" @click="$emit('closeModal')"></div>
         </div>
 
         <div class="modal__info">
           <div class="form">
             <label class="app-label">Makes
-              <input class="app-input" v-model="newItem.makes" v-validate="'required'" name="makes" autofocus>
+              <input ref="autoFocus"
+                     class="app-input"
+                     v-model="newItem.makes"
+                     v-validate="'required|min:2|max:15'"
+                     data-vv-validate-on="submit|blur"
+                     name="makes"
+                     placeholder="Freightliner">
               <span>{{ errors.first('makes') }}</span>
             </label>
 
             <label class="app-label">Model
-              <input class="app-input" v-model="newItem.model" v-validate="'required'" name="model">
+              <input class="app-input"
+                     v-model="newItem.model"
+                     v-validate="'required|min:2|max:15'"
+                     data-vv-validate-on="submit|blur"
+                     name="model"
+                     placeholder="Cascadia">
               <span>{{ errors.first('model') }}</span>
             </label>
 
             <label class="app-label">Number
-              <input class="app-input" v-model="newItem.number" v-validate="'required'" name="number">
+              <input class="app-input"
+                     v-model="newItem.number"
+                     v-validate="'required|min:2|max:10'"
+                     data-vv-validate-on="submit|blur"
+                     name="number"
+                     placeholder="AAA-111">
               <span>{{ errors.first('number') }}</span>
             </label>
 
             <label class="app-label">Year
-              <input class="app-input" v-model="newItem.year" v-validate="'required'" name="year">
+              <input class="app-input"
+                     v-model="newItem.year"
+                     v-validate="{ required: true, max_value: 2018, min_value: 1970 }"
+                     data-vv-validate-on="submit|blur"
+                     name="year"
+                     placeholder="2018">
               <span>{{ errors.first('year') }}</span>
             </label>
 
-            <button class="app-button submit" @click="validate">submit</button>
+            <button class="app-button add" @click="validate">submit</button>
           </div>
         </div>
 
@@ -80,14 +120,22 @@
 
 <script>
   import { EventBus } from '../../utils/EventBus'
+  import MaskedInput from 'vue-masked-input'
 
   export default {
     name: 'AppModal',
     props: ['itemName', 'editObj'],
+    components: {
+      MaskedInput
+    },
 
     created () {
       this.hideSideBar();
       Object.assign(this.newItem, this.editObj)
+    },
+
+    mounted () {
+      if (!this.editMode) this.$refs.autoFocus.focus();
     },
 
     beforeDestroy () {
@@ -103,12 +151,6 @@
     },
 
     methods: {
-      closeModal ({target, currentTarget}) {
-        if (
-          target.classList.contains('modal') ||
-          currentTarget.classList.contains('modal__close')
-        ) this.$emit('closeModal');
-      },
       validate () {
         this.$validator.validateAll().then((result) => {
           if(!result) return;
@@ -140,8 +182,9 @@
     padding: 16px 8px;
 
     &__container {
-      width: 288px;
+      width: 360px;
       margin: auto;
+      border-radius: 4px;
       background-color: #fff;
     }
 
@@ -157,11 +200,8 @@
       margin-bottom: 32px;
     }
 
-    &__close {
-      cursor: pointer;
-      margin-left: auto;
-      margin-bottom: auto;
-      font-family: sans-serif;
+    .add {
+      margin: 0 auto;
     }
 
     &__title {

@@ -1,7 +1,7 @@
 <template>
     <transition name="list">
       <div class="note" v-show="noteIsVisible">
-        <div class="note__close" @click="hideNote">X</div>
+        <div class="close-btn color" @click="hideNote"></div>
         <div class="note__message">{{ message }}</div>
       </div>
     </transition>
@@ -36,7 +36,7 @@
         this.$nextTick(() => {
           this.timer = setTimeout(() => {
             this.noteIsVisible = false
-          }, 3000);
+          }, 5000);
           this.message = opts.message;
           this.noteIsVisible = true;
         })
@@ -54,13 +54,9 @@
   width: 220px;
   padding: 16px;
   border-radius: 4px;
-  background-color: #eee;
+  color: #fff;
+  background-color: #66abfa;
+  filter: saturate(.8);
   box-shadow: 0 2px 5px rgba(20,20,20,.5);
-
-  &__close {
-    margin-right: 16px;
-    font-family: sans-serif;
-    cursor: pointer;
-  }
 }
 </style>

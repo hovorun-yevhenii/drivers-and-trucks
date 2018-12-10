@@ -1,6 +1,6 @@
 <template>
   <div class="trucks">
-    <div class="trucks__sort">
+    <div class="trucks__sort sort-row">
       <div class="makes">
         <span>makes</span>
         <div class="triangles">
@@ -26,6 +26,9 @@
                @click="sort('model', 'desc')">
           </div>
         </div>
+      </div>
+      <div class="number">
+        <span>number</span>
       </div>
       <div class="year">
         <span>year</span>
@@ -146,21 +149,20 @@
   &__sort {
     display: flex;
     align-items: center;
-    padding: 16px 0 16px 8px;
+    margin: 0 -16px;
+    padding: 16px 0 16px 16px;
     background-color: #eee;
 
-    & > * {
-      display: flex;
-      align-items: center;
-    }
-
     .makes {
-      margin-right: 132px;
+      margin-right: 147px;
     }
 
     .model {
-      margin-right: 315px;
+      margin-right: 150px;
     }
-   }
+    .number {
+      margin-right: 120px;
+    }
+  }
 }
 </style>
