@@ -97,6 +97,9 @@ $icon-close-color: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wI
     &:hover {
       filter: saturate(1.2);
     }
+    &:disabled {
+      filter: saturate(.5);
+    }
   }
   &.action {
     width: 36px;

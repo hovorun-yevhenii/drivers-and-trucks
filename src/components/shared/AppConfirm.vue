@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="confirm">
+    <div class="confirm" @keyup.enter="confirm">
       <div class="confirm__container">
         <div class="close-btn" @click="cancel"></div>
         <div class="confirm__message">Delete this {{itemToDel.name}}?</div>

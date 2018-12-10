@@ -3,7 +3,7 @@
       <p class="not-found__title">404</p>
       <p class="not-found__message">The page you were looking for doesn't exist.</p>
       <p class="not-found__message">You may have mistyped the address or the page may have moved.</p>
-      <router-link to="/" replace class="not-found__link">Go home</router-link>
+      <router-link to="/" replace class="not-found__link">Take me home</router-link>
     </div>
 </template>
 

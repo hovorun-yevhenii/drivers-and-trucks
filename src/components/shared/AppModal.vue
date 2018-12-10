@@ -54,7 +54,11 @@
               <span>{{ errors.first('phone') }}</span>
             </label>
 
-            <button class="app-button app-button--prime" @click="validate">submit</button>
+            <button class="app-button app-button--prime"
+                    @click="validateForm"
+                    :disabled="btnIsDisabled">
+              submit
+            </button>
           </div>
         </div>
 
@@ -110,7 +114,11 @@
               <span>{{ errors.first('year') }}</span>
             </label>
 
-            <button class="app-button app-button--prime" @click="validate">submit</button>
+            <button class="app-button app-button--prime"
+                    @click="validateForm"
+                    :disabled="btnIsDisabled">
+              submit
+            </button>
           </div>
         </div>
 
@@ -148,21 +156,26 @@
       return {
         initialPadding: 0,
         newItem: {},
-        editMode: Object.keys(this.editObj).length
+        editMode: Object.keys(this.editObj).length,
+        btnIsDisabled: false
       }
     },
 
     methods: {
-      validate() {
+      validateForm() {
+        if (this.btnIsDisabled) return;
+
+        this.btnIsDisabled = true;
+
         this.$validator.validateAll().then((result) => {
-          if (!result) return;
+          if (!result) return this.btnIsDisabled = false;
 
           if (!this.editMode) {
             this.itemName === 'driver'
               ? EventBus.$emit('createDriver', this.newItem)
               : EventBus.$emit('createTruck', this.newItem);
 
-            return;
+            return this.$emit('closeModal');
           }
 
           if (JSON.stringify(this.newItem) !== JSON.stringify(this.editObj)) {
