@@ -34,12 +34,12 @@
     align-items: center;
     padding: 16px 0;
     & + & {
-      border-top: 1px dashed #ddd;
+      border-top: 1px solid #ddd;
     }
 
     &__avatar {
       width: 64px;
-      border: 1px solid #aaa;
+      border: 1px solid #eee;
       border-radius: 50%;
     }
     &__name {

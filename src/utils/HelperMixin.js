@@ -6,7 +6,7 @@ import axios from './axiosInstance';
 export default {
   methods: {
     apiRequest (opts) {
-      return axios[opts.method || 'get'](opts.url, { body: opts.payload })
+      return axios[opts.payload ? 'put' : 'get'](opts.url, { body: opts.payload })
         .then(resp => resp)
         .catch(error => error);
     },

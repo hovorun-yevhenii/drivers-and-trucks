@@ -1,4 +1,5 @@
 <template>
+  <transition name="fade">
   <div class="modal">
     <div class="modal__container">
       <div v-if="itemName === 'driver'" class="modal__body">
@@ -53,7 +54,7 @@
               <span>{{ errors.first('phone') }}</span>
             </label>
 
-            <button class="app-button add" @click="validate">submit</button>
+            <button class="app-button app-button--prime" @click="validate">submit</button>
           </div>
         </div>
 
@@ -109,17 +110,18 @@
               <span>{{ errors.first('year') }}</span>
             </label>
 
-            <button class="app-button add" @click="validate">submit</button>
+            <button class="app-button app-button--prime" @click="validate">submit</button>
           </div>
         </div>
 
       </div>
     </div>
   </div>
+  </transition>
 </template>
 
 <script>
-  import { EventBus } from '../../utils/EventBus'
+  import {EventBus} from '../../utils/EventBus'
   import MaskedInput from 'vue-masked-input'
 
   export default {
@@ -129,20 +131,20 @@
       MaskedInput
     },
 
-    created () {
+    created() {
       this.hideSideBar();
       Object.assign(this.newItem, this.editObj)
     },
 
-    mounted () {
+    mounted() {
       if (!this.editMode) this.$refs.autoFocus.focus();
     },
 
-    beforeDestroy () {
+    beforeDestroy() {
       this.restoreSideBar();
     },
 
-    data () {
+    data() {
       return {
         initialPadding: 0,
         newItem: {},
@@ -151,14 +153,22 @@
     },
 
     methods: {
-      validate () {
+      validate() {
         this.$validator.validateAll().then((result) => {
-          if(!result) return;
+          if (!result) return;
 
-          if (this.itemName === 'driver') {
-            this.editMode ? EventBus.$emit('updateDriver', this.newItem) : EventBus.$emit('createDriver', this.newItem);
-          } else {
-            this.editMode ? EventBus.$emit('updateTruck', this.newItem) : EventBus.$emit('createTruck', this.newItem);
+          if (!this.editMode) {
+            this.itemName === 'driver'
+              ? EventBus.$emit('createDriver', this.newItem)
+              : EventBus.$emit('createTruck', this.newItem);
+
+            return;
+          }
+
+          if (JSON.stringify(this.newItem) !== JSON.stringify(this.editObj)) {
+            this.itemName === 'driver'
+              ? EventBus.$emit('updateDriver', this.newItem)
+              : EventBus.$emit('updateTruck', this.newItem);
           }
 
           this.$emit('closeModal');
@@ -175,7 +185,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: hsla(6,50%,5%,.7);
+    background-color: hsla(6, 50%, 5%, .7);
     display: flex;
     overflow-y: auto;
     z-index: 999;

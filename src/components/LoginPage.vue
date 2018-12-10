@@ -7,7 +7,7 @@
                name="login"
                v-validate="'required|min:4'"
                data-vv-validate-on="submit|blur"
-               @keyup.enter="submitHandler"
+               @keyup.enter="validateForm"
                autofocus>
         <span>{{ errors.first('login') }}</span>
       </label>
@@ -19,12 +19,12 @@
                placeholder="user"
                v-validate="'required|min:4'"
                data-vv-validate-on="submit|blur"
-               @keyup.enter="submitHandler"
+               @keyup.enter="validateForm"
                name="password">
         <span>{{ errors.first('password') }}</span>
       </label>
 
-      <button class="app-button add" @click="submitHandler">sign in</button>
+      <button class="app-button app-button--prime" @click="validateForm">sign in</button>
     </div>
 </template>
 
@@ -38,12 +38,11 @@
       }
     },
     methods: {
-      submitHandler () {
+      validateForm () {
         this.$validator.validateAll().then((result) => {
           if(!result) return;
 
-          localStorage.setItem('truckInToken', 'token');
-
+          localStorage.setItem('truckInToken', 'superSecureToken');
           this.$router.replace('/');
         })
       }
@@ -54,12 +53,10 @@
 <style lang="scss" scoped>
   .login {
     display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    width: 360px;
+    width: 320px;
     min-height: 80vh;
-    box-sizing: border-box;
     margin: 0 auto;
   }
 </style>

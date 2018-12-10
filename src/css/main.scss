@@ -59,14 +59,14 @@ $icon-close-color: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wI
   margin-bottom: 8px;
   padding-bottom: 16px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   color: rgba(20,20,20,.7);
 
   span {
     position: absolute;
     bottom: 0;
     font-size: 11px;
-    color: #c83c32;
+    color: #fa7266;
     font-weight: 400;
   }
 }
@@ -80,16 +80,16 @@ $icon-close-color: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wI
   cursor: pointer;
   transition: .2s;
   text-transform: uppercase;
-
   &:active, &:focus {
     outline: none;
   }
-  &.add {
+  &--prime {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 126px;
     height: 36px;
+    margin: 0 auto;
     border-radius: 20px;
     background-color: #fa7266;
     color: #fff;
@@ -119,6 +119,7 @@ $icon-close-color: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wI
   &.logout {
     height: 50px;
     width: 36px;
+    border-radius: 4px;
     background: #aaa $icon-logout center/52% no-repeat;
   }
 }
@@ -136,7 +137,7 @@ $icon-close-color: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wI
   border-radius: 50%;
   background: #fa7266 $icon-close-light center/45% no-repeat;
   cursor: pointer;
-  &.color {
+  &--colored {
     right: auto;
     left: -12px;
     background: #fff $icon-close-color center/45% no-repeat;
@@ -168,10 +169,10 @@ $icon-close-color: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wI
   &:hover {
     opacity: .3;
   }
-  &.up {
+  &--up {
     transform: rotate(180deg);
   }
-  &.active {
+  &--active {
     opacity: .5;
   }
 }

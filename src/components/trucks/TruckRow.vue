@@ -33,7 +33,7 @@
   align-items: center;
   padding: 16px 0;
   & + & {
-    border-top: 1px dashed #ddd;
+    border-top: 1px solid #ddd;
   }
 
   &__makes {

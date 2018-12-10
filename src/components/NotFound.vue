@@ -1,8 +1,9 @@
 <template>
     <div class="not-found">
       <p class="not-found__title">404</p>
-      <p class="not-found__message">The page you were looking for doesn't exist. You may have mistyped the address or the page may have moved.</p>
-      <router-link to="/" replace class="not-found__link">go home</router-link>
+      <p class="not-found__message">The page you were looking for doesn't exist.</p>
+      <p class="not-found__message">You may have mistyped the address or the page may have moved.</p>
+      <router-link to="/" replace class="not-found__link">Go home</router-link>
     </div>
 </template>
 
@@ -21,10 +22,15 @@
     }
     &__message {
       max-width: 340px;
-      margin-bottom: 48px;
+      margin-bottom: 16px;
       text-align: center;
       line-height: 1.3;
-      color: #aaa;
+      color: #555;
+      & + & {
+        margin-bottom: 48px;
+        font-size: 11px;
+        color: #aaa;
+      }
     }
     &__link {
       color: #66abfa;

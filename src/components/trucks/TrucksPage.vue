@@ -4,12 +4,12 @@
       <div class="makes">
         <span>makes</span>
         <div class="triangles">
-          <div class="triangle up"
-               :class="{'active' : sortName === 'makes' && sortType === 'asc'}"
+          <div class="triangle triangle--up"
+               :class="{'triangle--active' : sortName === 'makes' && sortType === 'asc'}"
                @click="sort('makes', 'asc')">
           </div>
           <div class="triangle"
-               :class="{'active' : sortName === 'makes' && sortType === 'desc'}"
+               :class="{'triangle--active' : sortName === 'makes' && sortType === 'desc'}"
                @click="sort('makes', 'desc')">
           </div>
         </div>
@@ -17,12 +17,12 @@
       <div class="model">
         <span>model</span>
         <div class="triangles">
-          <div class="triangle up"
-               :class="{'active' : sortName === 'model' && sortType === 'asc'}"
+          <div class="triangle triangle--up"
+               :class="{'triangle--active' : sortName === 'model' && sortType === 'asc'}"
                @click="sort('model', 'asc')">
           </div>
           <div class="triangle"
-               :class="{'active' : sortName === 'model' && sortType === 'desc'}"
+               :class="{'triangle--active' : sortName === 'model' && sortType === 'desc'}"
                @click="sort('model', 'desc')">
           </div>
         </div>
@@ -33,12 +33,12 @@
       <div class="year">
         <span>year</span>
         <div class="triangles">
-          <div class="triangle up"
-               :class="{'active' : sortName === 'year' && sortType === 'asc'}"
+          <div class="triangle triangle--up"
+               :class="{'triangle--active' : sortName === 'year' && sortType === 'asc'}"
                @click="sort('year', 'asc')">
           </div>
           <div class="triangle"
-               :class="{'active' : sortName === 'year' && sortType === 'desc'}"
+               :class="{'triangle--active' : sortName === 'year' && sortType === 'desc'}"
                @click="sort('year', 'desc')">
           </div>
         </div>
@@ -100,26 +100,25 @@
         truck.id = this.findMinUniqueId(this.trucks);
         this.trucks.unshift(truck);
         this.sort(this.sortName, this.sortType);
-        this.postTrucks("Truck has been created");
+        this.putToServer("Truck has been created");
       },
       updateTruck (truck) {
         const index = this.trucks.findIndex(item => item.id === truck.id);
 
         this.trucks[index] = truck;
         this.sort(this.sortName, this.sortType);
-        this.postTrucks("Truck has been updated");
+        this.putToServer("Truck has been updated");
       },
       deleteTruck(id) {
         const index = this.trucks.findIndex(item => item.id === id);
 
         this.trucks.splice(index, 1);
         this.sort(this.sortName, this.sortType);
-        this.postTrucks("Truck has been deleted");
+        this.putToServer("Truck has been deleted");
       },
-      postTrucks (message) {
+      putToServer (message) {
         this.apiRequest({
           url: "bwrwu",
-          method: "put",
           payload: JSON.stringify(this.trucks)
         }).then(
           () => EventBus.$emit('showNote', { message }),

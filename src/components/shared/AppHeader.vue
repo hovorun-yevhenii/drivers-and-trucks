@@ -4,7 +4,7 @@
         <router-link class="header__link" to="/drivers">Drivers</router-link>
         <router-link class="header__link" to="/trucks">Trucks</router-link>
       </div>
-      <button class="app-button add" @click="addItem"> + new {{ itemToAdd }}</button>
+      <button class="app-button app-button--prime" @click="addItem"> + new {{ itemToAdd }}</button>
       <div class="logout-wrap" @click="logOut">
         <span>Log Out</span>
         <button class="app-button logout"></button>

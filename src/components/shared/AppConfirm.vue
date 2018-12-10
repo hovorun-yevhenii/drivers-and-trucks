@@ -5,8 +5,8 @@
         <div class="close-btn" @click="cancel"></div>
         <div class="confirm__message">Delete this {{itemToDel.name}}?</div>
         <div class="confirm__buttons">
-          <button class="app-button add cancel" @click="cancel">cancel</button>
-          <button class="app-button add" @click="confirm">delete</button>
+          <button class="app-button app-button--prime cancel" @click="cancel">cancel</button>
+          <button class="app-button app-button--prime" @click="confirm">delete</button>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
     <transition name="list">
       <div class="note" v-show="noteIsVisible">
-        <div class="close-btn color" @click="hideNote"></div>
+        <div class="close-btn close-btn--colored" @click="hideNote"></div>
         <div class="note__message">{{ message }}</div>
       </div>
     </transition>
@@ -51,8 +51,8 @@
   top: 16px;
   right: -8px;
   display: flex;
-  width: 220px;
-  padding: 16px;
+  width: 180px;
+  padding: 16px 24px;
   border-radius: 4px;
   color: #fff;
   background-color: #66abfa;

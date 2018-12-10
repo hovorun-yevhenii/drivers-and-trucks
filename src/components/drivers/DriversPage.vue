@@ -4,12 +4,12 @@
       <div class="name">
         <span>name</span>
         <div class="triangles">
-          <div class="triangle up"
-               :class="{'active' : sortName === 'name' && sortType === 'asc'}"
+          <div class="triangle triangle--up"
+               :class="{'triangle--active' : sortName === 'name' && sortType === 'asc'}"
                @click="sort('name', 'asc')">
           </div>
           <div class="triangle"
-               :class="{'active' : sortName === 'name' && sortType === 'desc'}"
+               :class="{'triangle--active' : sortName === 'name' && sortType === 'desc'}"
                @click="sort('name', 'desc')">
           </div>
         </div>
@@ -17,12 +17,12 @@
       <div class="surname">
         <span>surname</span>
         <div class="triangles">
-          <div class="triangle up"
-               :class="{'active' : sortName === 'surname' && sortType === 'asc'}"
+          <div class="triangle triangle--up"
+               :class="{'triangle--active' : sortName === 'surname' && sortType === 'asc'}"
                @click="sort('surname', 'asc')">
           </div>
           <div class="triangle"
-               :class="{'active' : sortName === 'surname' && sortType === 'desc'}"
+               :class="{'triangle--active' : sortName === 'surname' && sortType === 'desc'}"
                @click="sort('surname', 'desc')">
           </div>
         </div>
@@ -30,12 +30,12 @@
       <div class="year">
         <span>year</span>
         <div class="triangles">
-          <div class="triangle up"
-               :class="{'active' : sortName === 'year' && sortType === 'asc'}"
+          <div class="triangle triangle--up"
+               :class="{'triangle--active' : sortName === 'year' && sortType === 'asc'}"
                @click="sort('year', 'asc')">
           </div>
           <div class="triangle"
-               :class="{'active' : sortName === 'year' && sortType === 'desc'}"
+               :class="{'triangle--active' : sortName === 'year' && sortType === 'desc'}"
                @click="sort('year', 'desc')">
           </div>
         </div>
@@ -100,26 +100,25 @@
         driver.id = this.findMinUniqueId(this.drivers);
         this.drivers.unshift(driver);
         this.sort(this.sortName, this.sortType);
-        this.postDrivers("Driver has been created");
+        this.putToServer("Driver has been created");
       },
       updateDriver(driver) {
         const index = this.drivers.findIndex(item => item.id === driver.id);
 
         this.drivers[index] = driver;
         this.sort(this.sortName, this.sortType);
-        this.postDrivers("Driver has been updated");
+        this.putToServer("Driver has been updated");
       },
       deleteDriver(id) {
         const index = this.drivers.findIndex(item => item.id === id);
 
         this.drivers.splice(index, 1);
         this.sort(this.sortName, this.sortType);
-        this.postDrivers("Driver has been deleted");
+        this.putToServer("Driver has been deleted");
       },
-      postDrivers (message) {
+      putToServer (message) {
         this.apiRequest({
           url: "mmcba",
-          method: "put",
           payload: JSON.stringify(this.drivers)
         }).then(
           () => EventBus.$emit('showNote', { message }),

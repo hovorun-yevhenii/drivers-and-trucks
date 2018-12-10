@@ -23,7 +23,7 @@
     z-index: 999;
 
     &__container {
-      width: 100px;
+      width: 85px;
       margin: auto;
       opacity: .7;
     }

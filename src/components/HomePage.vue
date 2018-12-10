@@ -2,14 +2,12 @@
   <div class="main">
     <div class="container">
       <app-header></app-header>
-      <transition name="fade">
-        <app-modal v-if="showModal"
-                   @closeModal="closeModal"
-                   :itemName="itemName"
-                   :editObj="editObj">
-        </app-modal>
-      </transition>
       <router-view @toggleLoader="toggleLoader"></router-view>
+      <app-modal v-if="showModal"
+                 @closeModal="closeModal"
+                 :itemName="itemName"
+                 :editObj="editObj">
+      </app-modal>
       <app-note></app-note>
       <app-confirm v-if="showConfirm" :itemToDel="itemToDel"></app-confirm>
       <app-loader v-if="isLoading"></app-loader>
@@ -38,10 +36,10 @@
       return {
         showModal: false,
         itemName: null,
-        editObj: {},
         isLoading: false,
         showConfirm: false,
-        itemToDel: null
+        itemToDel: null,
+        editObj: {},
       }
     },
     created () {
