@@ -17,10 +17,10 @@
     props: ["truck"],
     methods: {
       deleteTruck () {
-        EventBus.$emit('deleteTruck', this.truck.id)
+        EventBus.$emit('openConfirm', { open: true, name: 'truck', id: this.truck.id });
       },
       openTruckModal () {
-        EventBus.$emit('openTruckModal', this.truck)
+        EventBus.$emit('openTruckModal', this.truck);
       }
     }
   }

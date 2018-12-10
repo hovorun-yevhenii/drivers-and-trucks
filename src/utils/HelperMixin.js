@@ -17,6 +17,13 @@ export default {
     restoreSideBar () {
       document.body.style.paddingRight = 'initial';
       document.body.style.overflow = 'visible';
+    },
+    findMinUniqueId (list) {
+      for (let i = 1; ; i++) {
+        const index = list.findIndex(item => item.id === i);
+
+        if (index < 0) return i;
+      }
     }
   }
 }

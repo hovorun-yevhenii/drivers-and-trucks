@@ -10,6 +10,8 @@
         </app-modal>
       </transition>
       <router-view @toggleLoader="toggleLoader"></router-view>
+      <app-confirm v-if="showConfirm" :itemToDel="itemToDel"></app-confirm>
+      <app-note></app-note>
       <app-loader v-if="isLoading"></app-loader>
     </div>
   </div>
@@ -19,29 +21,37 @@
   import AppHeader from "./shared/AppHeader"
   import AppModal from "./shared/AppModal"
   import AppLoader from "./shared/AppLoader"
-  import { EventBus } from '../utils/EventBus'
+  import AppConfirm from "./shared/AppConfirm"
+  import AppNote from "./shared/AppNote"
+  import { EventBus } from "../utils/EventBus"
 
   export default {
     name: "HomePage",
     components: {
       AppHeader,
       AppModal,
-      AppLoader
+      AppLoader,
+      AppNote,
+      AppConfirm
     },
     data () {
       return {
         showModal: false,
         itemName: null,
         editObj: {},
-        isLoading: false
+        isLoading: false,
+        showConfirm: false,
+        itemToDel: null
       }
     },
     created () {
+      EventBus.$on('openConfirm', opts => this.openConfirm(opts));
       EventBus.$on('openNewModal', item => this.openModal({}, item));
       EventBus.$on('openDriverModal', driver => this.openModal(driver, 'driver'));
       EventBus.$on('openTruckModal', truck => this.openModal(truck, 'truck'));
     },
     beforeDestroy () {
+      EventBus.$off('openConfirm');
       EventBus.$off('openNewModal');
       EventBus.$off('openDriverModal');
       EventBus.$off('openTruckModal');
@@ -59,6 +69,15 @@
       },
       toggleLoader (isLoading) {
         this.isLoading = isLoading;
+      },
+      openConfirm (opts) {
+        if (!opts.open) {
+          this.showConfirm = false;
+          this.itemToDel = null;
+        } else {
+          this.itemToDel = opts;
+          this.showConfirm = true;
+        }
       }
     }
   }

@@ -85,7 +85,7 @@
 
       EventBus.$on('createTruck', truck => this.createTruck(truck));
       EventBus.$on('updateTruck', truck => this.updateTruck(truck));
-      EventBus.$on('deleteTruck', truck => this.deleteTruck(truck));
+      EventBus.$on('deleteTruck', id => this.deleteTruck(id));
     },
     beforeDestroy () {
       EventBus.$off('createTruck');
@@ -94,51 +94,34 @@
     },
     methods: {
       createTruck (truck) {
-        let index = 0;
-
-        while (this.trucks[index]) ++index;
-
-        truck.id = index + 1;
-
-        // function makeNumber() {
-        //
-        //   return 3
-        // }
-
-        // this.trucks.forEach((tr, i )=> {
-        //   makeNumber()
-        // })
-
+        truck.id = this.findMinUniqueId(this.trucks);
         this.trucks.unshift(truck);
         this.sort(this.sortName, this.sortType);
-        this.postTrucks();
+        this.postTrucks("Truck has been created");
       },
       updateTruck (truck) {
         const index = this.trucks.findIndex(item => item.id === truck.id);
 
         this.trucks[index] = truck;
         this.sort(this.sortName, this.sortType);
-        this.postTrucks();
+        this.postTrucks("Truck has been updated");
       },
       deleteTruck(id) {
         const index = this.trucks.findIndex(item => item.id === id);
 
         this.trucks.splice(index, 1);
         this.sort(this.sortName, this.sortType);
-        this.postTrucks();
+        this.postTrucks("Truck has been deleted");
       },
-      postTrucks () {
+      postTrucks (message) {
         this.apiRequest({
           url: "bwrwu",
           method: "put",
           payload: JSON.stringify(this.trucks)
         }).then(
-          () => {
-            console.log('good')
-          },
-          () => {
-            console.log('error');
-          });
+          () => EventBus.$emit('showNote', { message }),
+          () => EventBus.$emit('showNote', { message: 'Network error' })
+        );
       },
       sort(name, type) {
         if (this.sortName === name && this.sortType === type) {

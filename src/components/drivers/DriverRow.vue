@@ -18,7 +18,7 @@
     props: ['driver'],
     methods: {
       deleteDriver () {
-        EventBus.$emit('deleteDriver', this.driver.id)
+        EventBus.$emit('openConfirm', { open: true, name: 'driver', id: this.driver.id })
       },
       openDriverModal () {
         EventBus.$emit('openDriverModal', this.driver)

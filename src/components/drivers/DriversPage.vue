@@ -88,7 +88,7 @@
 
       EventBus.$on('createDriver', driver => this.createDriver(driver));
       EventBus.$on('updateDriver', driver => this.updateDriver(driver));
-      EventBus.$on('deleteDriver', driver => this.deleteDriver(driver));
+      EventBus.$on('deleteDriver', id => this.deleteDriver(id));
     },
     beforeDestroy() {
       EventBus.$off('createDriver');
@@ -97,41 +97,34 @@
     },
     methods: {
       createDriver (driver) {
-        let index = 0;
-
-        while (this.drivers[index]) ++index;
-
-        driver.id = index + 1;
+        driver.id = this.findMinUniqueId(this.drivers);
         this.drivers.unshift(driver);
         this.sort(this.sortName, this.sortType);
-        this.postDrivers();
+        this.postDrivers("Driver has been created");
       },
       updateDriver(driver) {
         const index = this.drivers.findIndex(item => item.id === driver.id);
 
         this.drivers[index] = driver;
         this.sort(this.sortName, this.sortType);
-        this.postDrivers();
+        this.postDrivers("Driver has been updated");
       },
       deleteDriver(id) {
         const index = this.drivers.findIndex(item => item.id === id);
 
         this.drivers.splice(index, 1);
         this.sort(this.sortName, this.sortType);
-        this.postDrivers();
+        this.postDrivers("Driver has been deleted");
       },
-      postDrivers () {
+      postDrivers (message) {
         this.apiRequest({
           url: "mmcba",
           method: "put",
           payload: JSON.stringify(this.drivers)
         }).then(
-          () => {
-            console.log('good')
-          },
-          () => {
-            console.log('error');
-          });
+          () => EventBus.$emit('showNote', { message }),
+          () => EventBus.$emit('showNote', { message: 'Network error' })
+        );
       },
       sort(name, type) {
         if (this.sortName === name && this.sortType === type) {
