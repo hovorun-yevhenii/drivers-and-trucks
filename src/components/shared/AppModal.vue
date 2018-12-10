@@ -43,7 +43,7 @@
             </label>
 
             <label class="app-label">Phone
-              <masked-input mask="\+\1 (111) 111-1111"
+              <masked-input mask="\+1 (111) 111-1111"
                             class="app-input"
                             v-model="newItem.phone"
                             v-validate="{ required: true, regex: /^[\s()+-]*([0-9][\s()+-]*){6,20}$/ }"
